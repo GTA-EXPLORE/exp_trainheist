@@ -5,7 +5,7 @@ Embark on a high-stakes adventure with our exclusive **Train Heist** script! Imm
 https://cdn.discordapp.com/attachments/1158106333879468073/1174386927722582086/Timeline_1.gif
 
 # Install
-- Clone or Download the repository.
+- Clone or Download the [repository](https://github.com/GTA-EXPLORE/exp_trainheist).
 - Add the **exp_trainheist** to your resources folder.
 - Install [**exp_target_menu**](https://forum.cfx.re/t/free-explore-target-menu/5176144) (or ox_target).
 - Add `ensure exp_trainheist` to your **server.cfg**.
