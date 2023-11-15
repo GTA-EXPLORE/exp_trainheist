@@ -2,7 +2,7 @@
 Embark on a high-stakes adventure with our exclusive **Train Heist** script! Immerse yourself in the thrill of a daring train robbery as you target **precious cargo**. Take on the role of a skilled outlaw, **eliminate guards**, strategically **break through doors**, and **seize the priceless loot**. Your mission is clear: **steal the treasure** and **deliver it** to the designated point before enforcements catch up. Are you ready to orchestrate the perfect heist and claim your place among the legends?
 
 # Preview
-![Preview](https://cdn.discordapp.com/attachments/1158106333879468073/1174386927722582086/Timeline_1.gif)
+![Preview](https://cdn.discordapp.com/attachments/1158106333879468073/1174386927722582086/Timeline_1.gif?raw=true)
 <img src="https://cdn.discordapp.com/attachments/1158106333879468073/1174386927722582086/Timeline_1.gif?raw=true" width="200px">
 # Install
 - Clone or Download the repository.
