@@ -3,7 +3,7 @@ Embark on a high-stakes adventure with our exclusive **Train Heist** script! Imm
 
 # Preview
 ![Preview](https://cdn.discordapp.com/attachments/1158106333879468073/1174386927722582086/Timeline_1.gif?raw=true)
-<img src="https://cdn.discordapp.com/attachments/1158106333879468073/1174386927722582086/Timeline_1.gif?raw=true" width="200px">
+<img src="https://cdn.discordapp.com/attachments/1158106333879468073/1174386927722582086/Timeline_1.gif?raw=true">
 # Install
 - Clone or Download the repository.
 - Add the **exp_trainheist** to your resources folder.
