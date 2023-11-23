@@ -1,96 +1,54 @@
 
-function loadPtfxAsset(dict)
-    while not HasNamedPtfxAssetLoaded(dict) do
-        RequestNamedPtfxAsset(dict)
-        Citizen.Wait(50)
-	end
+---@param model number Model Hash
+function _RequestModel(model)
+    RequestModel(model)
+    while not HasModelLoaded(model) do Wait(50) end
 end
 
-function loadAnimDict(dict)
-    while not HasAnimDictLoaded(dict) do
-        RequestAnimDict(dict)
-        Citizen.Wait(50)
-    end
+---@param heading number
+function GetForwardVectorFromHeading(heading)
+    local radians = math.rad(heading)
+    local x = math.sin(radians)
+    local y = math.cos(radians)
+    return vector2(x, y)
 end
 
-function loadModel(model)
-    if type(model) == 'number' then
-        model = model
-    else
-        model = GetHashKey(model)
-    end
-    while not HasModelLoaded(model) do
-        RequestModel(model)
-        Citizen.Wait(0)
-    end
+---@param fxName string
+function _RequestNamedPtfxAsset(fxName)
+    RequestNamedPtfxAsset(fxName)
+    while not HasNamedPtfxAssetLoaded(fxName) do Wait(50) end
 end
 
---Thanks to d0p3t
-function PlayCutscene(cut, coords)
-    while not HasThisCutsceneLoaded(cut) do 
-        RequestCutscene(cut, 8)
-        Wait(0) 
-    end
-    CreateCutscene(false, coords)
-    Finish(coords)
-    RemoveCutscene()
-    DoScreenFadeIn(500)
+---@param dict string
+function _RequestAnimDict(dict)
+    RequestAnimDict(dict)
+    while not HasAnimDictLoaded(dict) do Wait(50) end
 end
 
-function CreateCutscene(change, coords)
-    local ped = PlayerPedId()
-        
-    local clone = ClonePedEx(ped, 0.0, false, true, 1)
-    local clone2 = ClonePedEx(ped, 0.0, false, true, 1)
-    local clone3 = ClonePedEx(ped, 0.0, false, true, 1)
-    local clone4 = ClonePedEx(ped, 0.0, false, true, 1)
-    local clone5 = ClonePedEx(ped, 0.0, false, true, 1)
-
-    SetBlockingOfNonTemporaryEvents(clone, true)
-    SetEntityVisible(clone, false, false)
-    SetEntityInvincible(clone, true)
-    SetEntityCollision(clone, false, false)
-    FreezeEntityPosition(clone, true)
-    SetPedHelmet(clone, false)
-    RemovePedHelmet(clone, true)
-    
-    if change then
-        SetCutsceneEntityStreamingFlags('MP_2', 0, 1)
-        RegisterEntityForCutscene(ped, 'MP_2', 0, GetEntityModel(ped), 64)
-        
-        SetCutsceneEntityStreamingFlags('MP_1', 0, 1)
-        RegisterEntityForCutscene(clone2, 'MP_1', 0, GetEntityModel(clone2), 64)
-    else
-        SetCutsceneEntityStreamingFlags('MP_1', 0, 1)
-        RegisterEntityForCutscene(ped, 'MP_1', 0, GetEntityModel(ped), 64)
-
-        SetCutsceneEntityStreamingFlags('MP_2', 0, 1)
-        RegisterEntityForCutscene(clone2, 'MP_2', 0, GetEntityModel(clone2), 64)
+---@param orig table
+---@return table
+function DeepCopy(orig)
+    local copy
+    if type(orig) == 'table' then
+        copy = {}
+        for orig_key, orig_value in next, orig, nil do
+            copy[DeepCopy(orig_key)] = DeepCopy(orig_value)
+        end
+        setmetatable(copy, DeepCopy(getmetatable(orig)))
+    else -- number, string, boolean, etc
+        copy = orig
     end
+    return copy
+end
 
-    SetCutsceneEntityStreamingFlags('MP_3', 0, 1)
-    RegisterEntityForCutscene(clone3, 'MP_3', 0, GetEntityModel(clone3), 64)
-    
-    SetCutsceneEntityStreamingFlags('MP_4', 0, 1)
-    RegisterEntityForCutscene(clone4, 'MP_4', 0, GetEntityModel(clone4), 64)
-    
-    SetCutsceneEntityStreamingFlags('MP_5', 0, 1)
-    RegisterEntityForCutscene(clone5, 'MP_5', 0, GetEntityModel(clone5), 64)
-    
-    Wait(10)
-    if coords then
-        StartCutsceneAtCoords(coords, 0)
-    else
-        StartCutscene(0)
-    end
-    Wait(10)
-    ClonePedToTarget(clone, ped)
-    Wait(10)
-    DeleteEntity(clone)
-    DeleteEntity(clone2)
-    DeleteEntity(clone3)
-    DeleteEntity(clone4)
-    DeleteEntity(clone5)
-    Wait(50)
-    DoScreenFadeIn(250)
+---@param center vector3
+---@param radius number
+---@return vector3
+function GetRandomPositionInCircle(center, radius)
+    local angle = math.rad(math.random(0, 360))
+    local offsetX = (math.max(0.25, math.random()) * radius) * math.cos(angle)
+    local offsetY = (math.max(0.25, math.random()) * radius) * math.sin(angle)
+
+    local randomPosition = vector3(center.x + offsetX, center.y + offsetY, center.z)
+    return randomPosition
 end

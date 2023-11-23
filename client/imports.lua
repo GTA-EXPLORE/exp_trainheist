@@ -27,17 +27,52 @@ function SpawnNPC(model, position, heading)
 	return npc
 end
 
-function SetBlip(pName, pCoords, pSprite, pColor, pScale)
-	local blip = AddBlipForCoord(pCoords.x, pCoords.y, pCoords.z)
+---@param name string
+---@param coords vector3
+---@param sprite integer
+---@param color integer
+---@param scale number 
+---@return number Blip Blip Handle
+function SetBlip(name, coords, sprite, color, scale)
+	local blip = AddBlipForCoord(coords.x, coords.y, coords.z)
 
-	SetBlipSprite(blip, pSprite)
+	SetBlipSprite(blip, sprite)
 	SetBlipDisplay(blip, 4)
-	SetBlipColour(blip, pColor)
-	SetBlipScale(blip, pScale or 1.0)
+	SetBlipColour(blip, color)
+	SetBlipScale(blip, scale or 1.0)
 	SetBlipAsShortRange(blip, true)
 
 	BeginTextCommandSetBlipName('STRING')
-	AddTextComponentSubstringPlayerName(pName)
+	AddTextComponentSubstringPlayerName(name)
 	EndTextCommandSetBlipName(blip)
     return blip
+end
+
+function IsSpawnPointClear(coords)
+	return #EnumerateEntitiesWithinDistance(GetVehicles(), false, coords, 1.0) == 0
+end
+
+function EnumerateEntitiesWithinDistance(entities, isPlayerEntities, coords, maxDistance)
+	local nearbyEntities = {}
+
+	if coords then
+		coords = vector3(coords.x, coords.y, coords.z)
+	else
+		local playerPed = PlayerPedId()
+		coords = GetEntityCoords(playerPed)
+	end
+
+	for k,entity in pairs(entities) do
+		local distance = #(coords - GetEntityCoords(entity))
+
+		if distance <= maxDistance then
+			table.insert(nearbyEntities, isPlayerEntities and k or entity)
+		end
+	end
+
+	return nearbyEntities
+end
+
+function GetVehicles()
+	return GetGamePool('CVehicle')
 end

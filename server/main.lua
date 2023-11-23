@@ -1,53 +1,49 @@
-local lastrob, start = os.time() - ROBBERY_INTERVAL, false
+IsHeistActive = false
 
-RegisterServerCallback('exp_trainheist:checkPoliceCount', function(source, cb)
-    cb(GetPoliceCount() >= POLICE_REQUIRED)
-end)
-
-RegisterServerCallback('exp_trainheist:checkTime', function(source, cb)
-    local _source = source
-    local xPlayer = ESX.GetPlayerFromId(_source)
-    
-    if (os.time() - lastrob) < ROBBERY_INTERVAL then
-        local remaining = math.floor(ROBBERY_INTERVAL - (os.time() - lastrob) / 60)
-        TriggerClientEvent("exp_trainheist:ShowNotification", _source, {
-            message = _("wait_nextrob", remaining),
-            title = _("notif_title"),
-            type = "error"
+RegisterServerCallback('exp_trainheist:CanPlayerStartHeist', function(source, cb)
+    if IsHeistActive then
+        cb({
+            time = false,
+            cops = GetPoliceCount() >= POLICE_REQUIRED
         })
         return
     end
-
-    lastrob = os.time()
-    start = true
+    
+    cb({
+        time = true,
+        cops = GetPoliceCount() >= POLICE_REQUIRED
+    })
     DiscordLog(_source, {
         name = "start"
     })
-    cb()
+    IsHeistActive = true
+
+    Wait(ROBBERY_INTERVAL)
+
+    IsHeistActive = false
+    DiscordLog(_source, {
+        name = "reset"
+    })
+    TriggerClientEvent("exp_trainheist:ResetAndWipe", -1)
 end)
 
-RegisterServerCallback('exp_trainheist:hasItem', function(source, cb, item)
-    local _source = source
-    local xPlayer = ESX.GetPlayerFromId(_source)
-
-    cb(xPlayer.getInventoryItem(item).count > 0)
+RegisterServerCallback('exp_trainheist:HasItem', function(source, cb, item)
+    cb(DoesPlayerHaveItem(source, item, 1))
 end)
 
-RegisterNetEvent('exp_trainheist:rewardItems', function()
+RegisterNetEvent('exp_trainheist:GiveGold', function()
     local _source = source
-    local xPlayer = ESX.GetPlayerFromId(_source)
-
-    xPlayer.addInventoryItem(LOOT.item, LOOT.stack)
+    AddPlayerItem(_source, LOOT.item, LOOT.stack)
 end)
 
-RegisterNetEvent('exp_trainheist:sellRewardItems', function()
+RegisterNetEvent('exp_trainheist:DeliverGold', function()
     local _source = source
-    local xPlayer = ESX.GetPlayerFromId(_source)
 
-    local count = xPlayer.getInventoryItem(LOOT.item).count
+    local count = GetPlayerItemCount(_source, LOOT.item)
     if count > 0 then
-        xPlayer.removeInventoryItem(LOOT.item, count)
-        xPlayer.addAccountMoney("black_money", LOOT.price * count)
+        RemovePlayerItem(source, LOOT.item, count)
+        AddPlayerBlackMoney(source, LOOT.price * count)
+
         TriggerClientEvent("exp_trainheist:ShowNotification", _source, {
             message = _("money_earned", LOOT.price * count),
             title = _("notif_title"),
@@ -60,41 +56,23 @@ RegisterNetEvent('exp_trainheist:sellRewardItems', function()
     end
 end)
 
-RegisterNetEvent('exp_trainheist:containerSync', function(coords, rotation)
-    TriggerClientEvent('exp_trainheist:containerSync', -1, coords, rotation)
+RegisterNetEvent('exp_trainheist:SynchronizeContainer', function(data)
+    TriggerClientEvent('exp_trainheist:SynchronizeContainer', -1, data)
 end)
 
-RegisterNetEvent('exp_trainheist:objectSync', function(e)
-    TriggerClientEvent('exp_trainheist:objectSync', -1, e)
-end)
-
-RegisterNetEvent('exp_trainheist:trainLoop', function()
-    TriggerClientEvent('exp_trainheist:trainLoop', -1)
-end)
-
-RegisterNetEvent('exp_trainheist:lockSync', function(index)
-    TriggerClientEvent('exp_trainheist:lockSync', -1, index)
-end)
-
-RegisterNetEvent('exp_trainheist:grabSync', function(index, index2)
-    TriggerClientEvent('exp_trainheist:grabSync', -1, index, index2)
-end)
-
-RegisterNetEvent('exp_trainheist:resetHeist', function()
-    if not start then return end
-    start = false
-    TriggerClientEvent('exp_trainheist:resetHeist', -1)
-end)
-
-RegisterNetEvent("exp_trainheist:SpawnHitboxes", function()
-    TriggerClientEvent("exp_trainheist:SpawnHitboxes", -1)
-end)
-
-RegisterNetEvent("exp_trainheist:RemoveHitbox", function(id)
-    TriggerClientEvent("exp_trainheist:RemoveHitbox", -1, id)
+RegisterNetEvent('exp_trainheist:SynchronizeEntity', function(entity)
+    TriggerClientEvent('exp_trainheist:SynchronizeEntity', -1, entity)
 end)
 
 RegisterServerCallback("exp_trainheist:CanCarryGold", function(source, callback)
     local xPlayer = ESX.GetPlayerFromId(source)
     callback(xPlayer.canCarryItem(LOOT.item, LOOT.stack))
+end)
+
+RegisterNetEvent("exp_trainheist:CreateHitbox", function (data)
+    TriggerClientEvent("exp_trainheist:CreateHitbox", -1, data)
+end)
+
+RegisterNetEvent("exp_trainheist:RemoveHitbox", function (data)
+    TriggerClientEvent("exp_trainheist:RemoveHitbox", -1, data)
 end)
