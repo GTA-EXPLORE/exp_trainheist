@@ -52,3 +52,38 @@ function GetRandomPositionInCircle(center, radius)
     local randomPosition = vector3(center.x + offsetX, center.y + offsetY, center.z)
     return randomPosition
 end
+
+---@param data table
+function AddEntityMenuItem(data)
+    if GetResourceState("exp_target_menu") == "started" then
+        exports.exp_target_menu:AddEntityMenuItem({
+            entity = data.entity,
+            event = data.event,
+            name = data.name,
+            desc = data.desc
+        })
+    end
+
+    if GetResourceState("ox_target") == "started" then
+        exports.ox_target:addLocalEntity(data.entity, {
+            label = data.desc,
+            name = data.event,
+            event = data.event,
+            distance = 1.5
+          })
+    end
+end
+
+---@param data table
+function RemoveEntityMenuItem(data)
+    if GetResourceState("exp_target_menu") == "started" then
+        exports.exp_target_menu:RemoveEntityMenuItem({
+            entity = data.entity,
+            event = data.event
+        })
+    end
+
+    if GetResourceState("ox_target") == "started" then
+        exports.ox_target:removeLocalEntity(data.entity, data.event)
+    end
+end

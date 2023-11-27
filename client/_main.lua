@@ -1,4 +1,4 @@
-Entities, Hitboxes, StartNPC, HeistBlip, HitboxRegister = {}, {}, nil, nil, {}
+Entities, Hitboxes, StartNPC, HeistBlip, HitboxRegister, HasGold = {}, {}, nil, nil, {}, false
 
 Citizen.CreateThread(function()
     StartNPC = SpawnNPC(START_SCENE.ped.model, START_SCENE.ped.coords, START_SCENE.ped.heading)
@@ -6,8 +6,12 @@ Citizen.CreateThread(function()
     SetEntityInvincible(StartNPC, true)
     SetBlockingOfNonTemporaryEvents(StartNPC, true)
     TaskStartScenarioInPlace(StartNPC, "WORLD_HUMAN_SMOKING", 0, true)
-    TriggerEvent("exp_target_menu:AddEntityMenuItem", StartNPC, "exp_trainheist:StartHeist", _("start_npc_desc"), false)
-    TriggerEvent("exp_target_menu:SetEntityName", StartNPC, _("start_npc_name"))
+    AddEntityMenuItem({
+        entity = StartNPC,
+        event = "exp_trainheist:StartHeist",
+        name = _("start_npc_name"),
+        desc = _("start_npc_desc")
+    })
 end)
 
 
@@ -52,6 +56,7 @@ end
 RegisterNetEvent("exp_trainheist:StartHeist", StartTrainHeist)
 
 AddEventHandler("exp_trainheist:CutDoor", function(entity)
+    entity = type(entity) == "number" and entity or entity.entity
     TriggerServerCallback('exp_trainheist:HasItem', function(hasItem)
         if not hasItem then
             ShowNotification({
@@ -79,6 +84,7 @@ AddEventHandler("exp_trainheist:CutDoor", function(entity)
 end)
 
 AddEventHandler("exp_trainheist:GrabGold", function(entity)
+    entity = type(entity) == "number" and entity or entity.entity
     TriggerServerCallback("exp_trainheist:CanCarryGold", function(can_carry)
         if not can_carry then
             ShowNotification({
@@ -102,11 +108,20 @@ function SetupGoldDelivery()
         message = _("deliver_gold"),
         type = "default"
     })
-    TriggerEvent("exp_target_menu:AddEntityMenuItem", StartNPC, "exp_trainheist:DeliverGold", _("deliver_the_gold"), false)
+    if HasGold then return end
+    HasGold = true
+    AddEntityMenuItem({
+        entity = StartNPC,
+        event = "exp_trainheist:DeliverGold",
+        desc = _("deliver_the_gold")
+    })
 end
 
 AddEventHandler("exp_trainheist:DeliverGold", function(entity)
+    entity = type(entity) == "number" and entity or entity.entity
+    RemoveEntityMenuItem({entity = entity, event = "exp_trainheist:DeliverGold"})
     TriggerServerEvent("exp_trainheist:DeliverGold")
+    HasGold = false
 end)
 
 RegisterNetEvent("exp_trainheist:ShowNotification", function(data)

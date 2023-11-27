@@ -5,8 +5,12 @@ RegisterNetEvent("exp_trainheist:CreateHitbox", function (data)
     SetEntityRotation(hitbox, data.rotation.x, data.rotation.y, data.rotation.z)
     SetEntityInvincible(hitbox, true)
     SetEntityVisible(hitbox, false)
-    TriggerEvent("exp_target_menu:AddEntityMenuItem", hitbox, data.event, data.description, false)
-    TriggerEvent("exp_target_menu:SetEntityName", hitbox, data.name)
+    AddEntityMenuItem({
+        entity = hitbox,
+        event = data.event,
+        name = data.name,
+        desc = data.description
+    })
     Entities[#Entities+1] = hitbox
 
     Hitboxes[hitbox] = data.data
