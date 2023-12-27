@@ -15,3 +15,12 @@ You can find the complete [documentation](https://discord.com/channels/957638068
 
 # Check out all our works
 We are working on other **resources**. You can check them out on our [website](https://www.gta-explore.com/#services).
+
+# Updates
+### Dec 27, 2023
+> * Now automatically compatible with **QB-Core** .
+> * Now is also compatible with **QB-Target** .
+
+### Nov 27, 2023
+> - Now automatically compatible with **Ox_target**.
+> - Updated to the **latest version** of **exp_target_menu**.
