@@ -25,5 +25,8 @@ Locales["fr"] = {
     alert_content = "Un ~b~train~s~ se fait braquer!",
 
     deliver_gold = "Ramène moi cet ~b~or~s~.",
-    deliver_the_gold = "Livrer l'or"
+    deliver_the_gold = "Livrer l'or",
+
+    grinder_label = "Meuleuse",
+    grinder_desc = "Une meuleuse tout à fait normale."
 }

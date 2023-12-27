@@ -65,8 +65,7 @@ RegisterNetEvent('exp_trainheist:SynchronizeEntity', function(entity)
 end)
 
 RegisterServerCallback("exp_trainheist:CanCarryGold", function(source, callback)
-    local xPlayer = ESX.GetPlayerFromId(source)
-    callback(xPlayer.canCarryItem(LOOT.item, LOOT.stack))
+    callback(CanPlayerCarryItem(source, LOOT.item, LOOT.stack))
 end)
 
 RegisterNetEvent("exp_trainheist:CreateHitbox", function (data)

@@ -24,5 +24,10 @@ Locales["en"] = {
     alert_content = "A ~b~train~s~ is being robbed!",
 
     deliver_gold = "Bring me back that ~b~gold~s~.",
-    deliver_the_gold = "Deliver the gold"
+    deliver_the_gold = "Deliver the gold",
+
+    grinder_label = "Grinder",
+    grinder_desc = "Just a regular grinder.",
+    loot_item_label = "Gold Ingot",
+    loot_item_desc = "Pretty shiny"
 }
