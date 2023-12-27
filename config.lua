@@ -3,13 +3,13 @@ LANGUAGE = 'en'
 POLICE_REQUIRED = 0
 ROBBERY_INTERVAL = 2*60*60000 -- 2 Hours
 
-BREAK_ITEM = "grinder"  -- Required item to break into containers, Remove to allow anyone to break.
+BREAK_ITEM = "grinder"  -- Required item to break into containers.
 
 QB_MAX_WEIGHT = 120000 -- Only For QB-Core
 
 LOOT = {
     item = "gold_ingot",    -- Item Name
-    stack = 25,              -- Amount of gold ingots grabbed per stack
+    stack = 25,             -- Amount of gold ingots grabbed per stack
     price = 300             -- Selling price
 }
 
