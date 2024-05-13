@@ -62,17 +62,13 @@ function AddEntityMenuItem(data)
             name = data.name,
             desc = data.desc
         })
-    end
-
-    if GetResourceState("ox_target") == "started" then
+    elseif GetResourceState("ox_target") == "started" then
         exports.ox_target:addLocalEntity(data.entity, {
             label = data.desc,
             event = data.event,
             distance = 1.5
           })
-    end
-
-    if GetResourceState("qb-target") == "started" then
+    elseif GetResourceState("qb-target") == "started" then
         exports["qb-target"]:AddTargetEntity(data.entity, {
             options = {
                 {
