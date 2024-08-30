@@ -9,7 +9,8 @@ RegisterNetEvent("exp_trainheist:CreateHitbox", function (data)
         entity = hitbox,
         event = data.event,
         name = data.name,
-        desc = data.description
+        desc = data.description,
+        icon = data.icon
     })
     Entities[#Entities+1] = hitbox
 

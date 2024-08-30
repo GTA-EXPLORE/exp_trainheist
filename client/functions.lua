@@ -1,5 +1,5 @@
 
----@param model number Model Hash
+---@param model any Model Hash
 function _RequestModel(model)
     RequestModel(model)
     while not HasModelLoaded(model) do Wait(50) end
@@ -55,25 +55,22 @@ end
 
 ---@param data table
 function AddEntityMenuItem(data)
-    if GetResourceState("exp_target_menu") == "started" then
-        exports.exp_target_menu:AddEntityMenuItem({
-            entity = data.entity,
-            event = data.event,
-            name = data.name,
-            desc = data.desc
-        })
-    elseif GetResourceState("ox_target") == "started" then
+    if GetResourceState("ox_target") == "started" then
         exports.ox_target:addLocalEntity(data.entity, {
             label = data.desc,
             event = data.event,
+            icon = data.icon,
             distance = 1.5
-          })
-    elseif GetResourceState("qb-target") == "started" then
+        })
+    end
+
+    if GetResourceState("qb-target") == "started" then
         exports["qb-target"]:AddTargetEntity(data.entity, {
             options = {
                 {
                     label = data.desc,
                     event = data.event,
+                    icon = data.icon,
                 }
             },
             distance = 1.5
@@ -93,4 +90,64 @@ function RemoveEntityMenuItem(data)
     if GetResourceState("ox_target") == "started" then
         exports.ox_target:removeLocalEntity(data.entity, data.event)
     end
+end
+
+
+function SpawnNPC(model, position, heading)
+	model = GetHashKey(model)
+	RequestModel(model)
+    while not HasModelLoaded(model) do Wait(50) end
+	local npc = CreatePed(4, model, position, heading, false, true)
+	SetEntityHeading(npc, heading)
+	return npc
+end
+
+---@param name string
+---@param coords vector3
+---@param sprite integer
+---@param color integer
+---@param scale number 
+---@return number Blip Blip Handle
+function SetBlip(name, coords, sprite, color, scale)
+	local blip = AddBlipForCoord(coords.x, coords.y, coords.z)
+
+	SetBlipSprite(blip, sprite)
+	SetBlipDisplay(blip, 4)
+	SetBlipColour(blip, color)
+	SetBlipScale(blip, scale or 1.0)
+	SetBlipAsShortRange(blip, true)
+
+	BeginTextCommandSetBlipName('STRING')
+	AddTextComponentSubstringPlayerName(name)
+	EndTextCommandSetBlipName(blip)
+    return blip
+end
+
+function IsSpawnPointClear(coords)
+	return #EnumerateEntitiesWithinDistance(GetVehicles(), false, coords, 1.0) == 0
+end
+
+function EnumerateEntitiesWithinDistance(entities, isPlayerEntities, coords, maxDistance)
+	local nearbyEntities = {}
+
+	if coords then
+		coords = vector3(coords.x, coords.y, coords.z)
+	else
+		local playerPed = PlayerPedId()
+		coords = GetEntityCoords(playerPed)
+	end
+
+	for k,entity in pairs(entities) do
+		local distance = #(coords - GetEntityCoords(entity))
+
+		if distance <= maxDistance then
+			table.insert(nearbyEntities, isPlayerEntities and k or entity)
+		end
+	end
+
+	return nearbyEntities
+end
+
+function GetVehicles()
+	return GetGamePool('CVehicle')
 end

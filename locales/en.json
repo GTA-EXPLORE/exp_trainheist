@@ -1,0 +1,32 @@
+{
+    "error": "An error occured.",
+    
+    "heistblip_name": "Train stopped",
+    "buyer_blip": "Buyers",
+    "notif_title": "Train Heist",
+    "need_police": "There is not enough cop online.",
+    "wait_nextrob": "The target is over watched. We'll try again later.",
+    "money_earned": "Here, take that in exchange $%s.",
+    "missing_grind": "You need a grinder for that.",
+    "missing_bag": "You need a bag for that.",
+    "goto_ambush": "A train with a precious loot is stopped.\n- Eliminate the guards.\n- Find the Merryweather containers.\n- Steal the loot.",
+    "deliver_to_buyer": "Deliver the loot to the buyers, at the delivery point. Check your GPS.",
+    "cut_door": "Open with Grinder",
+    "door_name": "Container",
+    "gold_name": "Gold Ingots",
+    "grab_gold": "Take gold ingots",
+    "not_enough_space": "You don't have enough space.",
+
+    "start_npc_name": "Suspicious Guy",
+    "start_npc_desc": "Start Train Heist",
+    "alert_title": "Train Heist",
+    "alert_content": "A train is being robbed!",
+
+    "deliver_gold": "Bring me back that gold.",
+    "deliver_the_gold": "Deliver the gold",
+
+    "grinder_label": "Grinder",
+    "grinder_desc": "Just a regular grinder.",
+    "loot_item_label": "Gold Ingot",
+    "loot_item_desc": "Pretty shiny"
+}

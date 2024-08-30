@@ -1,52 +1,54 @@
+SD.Locale.LoadLocale(LANGUAGE)
 IsHeistActive = false
 
-RegisterServerCallback('exp_trainheist:CanPlayerStartHeist', function(source, cb)
+SD.Callback.Register('exp_trainheist:CanPlayerStartHeist', function(source)
     if IsHeistActive then
-        cb({
+        return({
             time = false,
             cops = GetPoliceCount() >= POLICE_REQUIRED
         })
-        return
     end
     
-    cb({
+    Citizen.CreateThread(function()
+        DiscordLog(_source, {
+            name = "start"
+        })
+        IsHeistActive = true
+        
+        Wait(ROBBERY_INTERVAL)
+        
+        IsHeistActive = false
+        DiscordLog(_source, {
+            name = "reset"
+        })
+        TriggerClientEvent("exp_trainheist:ResetAndWipe", -1)
+    end)
+    return({
         time = true,
         cops = GetPoliceCount() >= POLICE_REQUIRED
     })
-    DiscordLog(_source, {
-        name = "start"
-    })
-    IsHeistActive = true
-
-    Wait(ROBBERY_INTERVAL)
-
-    IsHeistActive = false
-    DiscordLog(_source, {
-        name = "reset"
-    })
-    TriggerClientEvent("exp_trainheist:ResetAndWipe", -1)
 end)
 
-RegisterServerCallback('exp_trainheist:HasItem', function(source, cb, item)
-    cb(DoesPlayerHaveItem(source, item, 1))
+SD.Callback.Register('exp_trainheist:HasItem', function(source, item)
+    return(SD.Inventory.HasItem(source, item, 1))
 end)
 
 RegisterNetEvent('exp_trainheist:GiveGold', function()
     local _source = source
-    AddPlayerItem(_source, LOOT.item, LOOT.stack)
+    SD.Inventory.AddItem(_source, LOOT.item, LOOT.stack)
 end)
 
 RegisterNetEvent('exp_trainheist:DeliverGold', function()
     local _source = source
 
-    local count = GetPlayerItemCount(_source, LOOT.item)
+    local count = SD.Inventory.HasItem(_source, LOOT.item)
     if count > 0 then
-        RemovePlayerItem(source, LOOT.item, count)
-        AddPlayerBlackMoney(source, LOOT.price * count)
+        SD.Inventory.RemoveItem(source, LOOT.item, count)
+        SD.Money.AddMoney(source, MONEY_TYPE, LOOT.price * count)
 
         TriggerClientEvent("exp_trainheist:ShowNotification", _source, {
-            message = _("money_earned", LOOT.price * count),
-            title = _("notif_title"),
+            message = SD.Locale.T("money_earned", LOOT.price * count),
+            title = SD.Locale.T("notif_title"),
             type = "default"
         })
         DiscordLog(_source, {
@@ -64,8 +66,8 @@ RegisterNetEvent('exp_trainheist:SynchronizeEntity', function(entity)
     TriggerClientEvent('exp_trainheist:SynchronizeEntity', -1, entity)
 end)
 
-RegisterServerCallback("exp_trainheist:CanCarryGold", function(source, callback)
-    callback(CanPlayerCarryItem(source, LOOT.item, LOOT.stack))
+SD.Callback.Register("exp_trainheist:CanCarryGold", function(source)
+    return true
 end)
 
 RegisterNetEvent("exp_trainheist:CreateHitbox", function (data)

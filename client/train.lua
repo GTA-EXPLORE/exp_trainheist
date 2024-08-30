@@ -108,8 +108,9 @@ function SetupContainers(entity)
         position = GetOffsetFromEntityInWorldCoords(entity, vector3(0.0, 2.35, -0.3)),
         rotation = rotation,
         event = "exp_trainheist:CutDoor",
-        description = _("cut_door"),
-        name = _("door_name"),
+        description = SD.Locale.T("cut_door"),
+        name = SD.Locale.T("door_name"),
+        icon = "fas fa-door-open",
         id = hid,
         data = {
             container = NetworkGetNetworkIdFromEntity(container_1),
@@ -142,8 +143,9 @@ function SetupContainers(entity)
         position = GetOffsetFromEntityInWorldCoords(entity, vector3(0.0, -2.4, -0.3)),
         rotation = vector3(rotation.x-2*TRAIN.angle, rotation.y, rotation.z+180),
         event = "exp_trainheist:CutDoor",
-        description = _("cut_door"),
-        name = _("door_name"),
+        description = SD.Locale.T("cut_door"),
+        name = SD.Locale.T("door_name"),
+        icon = "fas fa-door-open",
         id = hid,
         data = {
             container = NetworkGetNetworkIdFromEntity(container_2),
@@ -180,8 +182,9 @@ function SetupLoot(entity)
         position = GetEntityCoords(gold),
         rotation = rotation,
         event = "exp_trainheist:GrabGold",
-        description = _("grab_gold"),
-        name = _("gold_name"),
+        description = SD.Locale.T("grab_gold"),
+        name = SD.Locale.T("gold_name"),
+        icon = "fas fa-hand-back-fist",
         id = hid,
         data = {
             gold = NetworkGetNetworkIdFromEntity(gold)

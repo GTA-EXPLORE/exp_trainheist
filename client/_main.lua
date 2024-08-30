@@ -1,3 +1,4 @@
+SD.Locale.LoadLocale(LANGUAGE)
 Entities, Hitboxes, StartNPC, HeistBlip, HitboxRegister, HasGold = {}, {}, nil, nil, {}, false
 
 Citizen.CreateThread(function()
@@ -9,18 +10,19 @@ Citizen.CreateThread(function()
     AddEntityMenuItem({
         entity = StartNPC,
         event = "exp_trainheist:StartHeist",
-        name = _("start_npc_name"),
-        desc = _("start_npc_desc")
+        name = SD.Locale.T("start_npc_name"),
+        desc = SD.Locale.T("start_npc_desc"),
+        icon = "fas fa-sack-dollar"
     })
 end)
 
 
 function StartTrainHeist()
-    TriggerServerCallback('exp_trainheist:CanPlayerStartHeist', function(data)
+    SD.Callback('exp_trainheist:CanPlayerStartHeist', false, function(data)
         if not data.time then
             ShowNotification({
-                message = _("wait_nextrob"),
-                title = _("notif_title"),
+                message = SD.Locale.T("wait_nextrob"),
+                title = SD.Locale.T("notif_title"),
                 type = "error"
             })
             return
@@ -28,20 +30,20 @@ function StartTrainHeist()
 
         if not data.cops then
             ShowNotification({
-                message = _("need_police"),
-                title = _("notif_title"),
+                message = SD.Locale.T("need_police"),
+                title = SD.Locale.T("notif_title"),
                 type = "error"
             })
             return
         end
 
         ShowNotification({
-            message = _("goto_ambush"),
-            title = _("notif_title"),
+            message = SD.Locale.T("goto_ambush"),
+            title = SD.Locale.T("notif_title"),
             type = "default"
         })
         
-        HeistBlip = SetBlip(_('heistblip_name'), TRAIN.position, 570, 1)
+        HeistBlip = SetBlip(SD.Locale.T('heistblip_name'), TRAIN.position, 570, 1)
         SetBlipAsShortRange(HeistBlip, false)
 
         local ped = PlayerPedId()
@@ -55,13 +57,13 @@ function StartTrainHeist()
 end
 RegisterNetEvent("exp_trainheist:StartHeist", StartTrainHeist)
 
-AddEventHandler("exp_trainheist:CutDoor", function(entity)
-    entity = type(entity) == "number" and entity or entity.entity
-    TriggerServerCallback('exp_trainheist:HasItem', function(hasItem)
+AddEventHandler("exp_trainheist:CutDoor", function(data)
+    local entity = data.entity
+    SD.Callback('exp_trainheist:HasItem', false, function(hasItem)
         if not hasItem then
             ShowNotification({
-                message = _("missing_grind"),
-                title = _("notif_title"),
+                message = SD.Locale.T("missing_grind"),
+                title = SD.Locale.T("notif_title"),
                 type = "error"
             })
             return
@@ -74,8 +76,8 @@ AddEventHandler("exp_trainheist:CutDoor", function(entity)
             AnimateContainerOpening(Hitboxes[entity])
         else
             ShowNotification({
-                message = _("missing_bag"),
-                title = _("notif_title"),
+                message = SD.Locale.T("missing_bag"),
+                title = SD.Locale.T("notif_title"),
                 type = "error"
             })
         end
@@ -83,13 +85,13 @@ AddEventHandler("exp_trainheist:CutDoor", function(entity)
     end, BREAK_ITEM)
 end)
 
-AddEventHandler("exp_trainheist:GrabGold", function(entity)
-    entity = type(entity) == "number" and entity or entity.entity
-    TriggerServerCallback("exp_trainheist:CanCarryGold", function(can_carry)
+AddEventHandler("exp_trainheist:GrabGold", function(data)
+    local entity = data.entity
+    SD.Callback("exp_trainheist:CanCarryGold", false, function(can_carry)
         if not can_carry then
             ShowNotification({
-                message = _("not_enough_space"),
-                title = _("notif_title"),
+                message = SD.Locale.T("not_enough_space"),
+                title = SD.Locale.T("notif_title"),
                 type = "error"
             })
             return
@@ -104,8 +106,8 @@ end)
 
 function SetupGoldDelivery()
     ShowNotification({
-        title = _("start_npc_name"),
-        message = _("deliver_gold"),
+        title = SD.Locale.T("start_npc_name"),
+        message = SD.Locale.T("deliver_gold"),
         type = "default"
     })
     if HasGold then return end
@@ -113,12 +115,13 @@ function SetupGoldDelivery()
     AddEntityMenuItem({
         entity = StartNPC,
         event = "exp_trainheist:DeliverGold",
-        desc = _("deliver_the_gold")
+        desc = SD.Locale.T("deliver_the_gold"),
+        icon = "fas fa-sack-dollar"
     })
 end
 
-AddEventHandler("exp_trainheist:DeliverGold", function(entity)
-    entity = type(entity) == "number" and entity or entity.entity
+AddEventHandler("exp_trainheist:DeliverGold", function(data)
+    local entity = data.entity
     RemoveEntityMenuItem({entity = entity, event = "exp_trainheist:DeliverGold"})
     TriggerServerEvent("exp_trainheist:DeliverGold")
     HasGold = false
@@ -129,7 +132,7 @@ RegisterNetEvent("exp_trainheist:ShowNotification", function(data)
 end)
 
 RegisterNetEvent("exp_bank_robbery:ShowPoliceAlert", function(position)
-    local blip_icon = SetBlip(_("alert_title"), position, POL_ALERT_SPRITE, POL_ALERT_COLOR, 1.0)
+    local blip_icon = SetBlip(SD.Locale.T("alert_title"), position, POL_ALERT_SPRITE, POL_ALERT_COLOR, 1.0)
     SetBlipAsShortRange(blip_icon, false)
     if POL_ALERT_WAVE then
         local blip_wave = SetBlip("", position, 161, POL_ALERT_COLOR, 1.0)
@@ -142,8 +145,8 @@ RegisterNetEvent("exp_bank_robbery:ShowPoliceAlert", function(position)
     RemoveBlip(blip_icon)
     RemoveBlip(blip_wave)
     ShowNotification({
-        title = _("alert_title"),
-        message = _("alert_content")
+        title = SD.Locale.T("alert_title"),
+        message = SD.Locale.T("alert_content")
     })
 end)
 
@@ -152,7 +155,6 @@ RegisterNetEvent('exp_trainheist:SynchronizeEntity', function(net_entity)
 end)
 
 function SpawnGuards(train_data)
-
     for index, value in ipairs(GUARDS.models) do
         _RequestModel(GetHashKey(value))
     end
