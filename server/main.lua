@@ -11,7 +11,8 @@ SD.Callback.Register('exp_trainheist:CanPlayerStartHeist', function(source)
     
     Citizen.CreateThread(function()
         DiscordLog(_source, {
-            name = "start"
+            name = "start",
+            message = SD.Name.GetFullName(source).." ("..source..") has stated a train heist."
         })
         IsHeistActive = true
         
@@ -19,7 +20,8 @@ SD.Callback.Register('exp_trainheist:CanPlayerStartHeist', function(source)
         
         IsHeistActive = false
         DiscordLog(_source, {
-            name = "reset"
+            name = "reset",
+            message = "Bank Robbery is reset.",
         })
         TriggerClientEvent("exp_trainheist:ResetAndWipe", -1)
     end)
@@ -47,13 +49,13 @@ RegisterNetEvent('exp_trainheist:DeliverGold', function()
         SD.Money.AddMoney(source, MONEY_TYPE, LOOT.price * count)
 
         TriggerClientEvent("exp_trainheist:ShowNotification", _source, {
-            message = SD.Locale.T("money_earned", LOOT.price * count),
+            message = SD.Locale.T("money_earned", {LOOT.price * count}),
             title = SD.Locale.T("notif_title"),
             type = "default"
         })
         DiscordLog(_source, {
-            name = "End",
-            earnings = LOOT.price * count
+            name = "end",
+            message = SD.Name.GetFullName(_source).." (".._source..") just delivered "..count.." gold for $"..LOOT.price * count..".",
         })
     end
 end)
