@@ -1,0 +1,32 @@
+{
+    "error": "En feil oppstod.",
+    
+    "heistblip_name": "Tog stoppet",
+    "buyer_blip": "Kjøpere",
+    "notif_title": "Togrøveri",
+    "need_police": "Det er ikke nok politifolk online.",
+    "wait_nextrob": "Målet er under overvåking. Vi prøver igjen senere.",
+    "money_earned": "Her, ta dette i bytte $%s.",
+    "missing_grind": "Du trenger en slipemaskin for det.",
+    "missing_bag": "Du trenger en bag for det.",
+    "goto_ambush": "Et tog med en verdifull last er stoppet.\n- Eliminer vaktene.\n- Finn Merryweather-containerne.\n- Stjel byttet.",
+    "deliver_to_buyer": "Lever byttet til kjøperne, ved leveringspunktet. Sjekk GPS-en din.",
+    "cut_door": "Åpne med slipemaskin",
+    "door_name": "Container",
+    "gold_name": "Gullbarrer",
+    "grab_gold": "Ta gullbarrer",
+    "not_enough_space": "Du har ikke nok plass.",
+
+    "start_npc_name": "Mistenkelig fyr",
+    "start_npc_desc": "Start togrøveri",
+    "alert_title": "Togrøveri",
+    "alert_content": "Et tog blir ranet!",
+
+    "deliver_gold": "Gi meg det gullet.",
+    "deliver_the_gold": "Lever gullet",
+
+    "grinder_label": "Slipemaskin",
+    "grinder_desc": "Bare en vanlig slipemaskin.",
+    "loot_item_label": "Gullbarre",
+    "loot_item_desc": "Ganske skinnende"
+}

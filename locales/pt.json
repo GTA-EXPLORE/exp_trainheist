@@ -1,0 +1,32 @@
+{
+    "error": "Ocorreu um erro.",
+    
+    "heistblip_name": "Trem parado",
+    "buyer_blip": "Compradores",
+    "notif_title": "Assalto ao Trem",
+    "need_police": "Não há policiais suficientes online.",
+    "wait_nextrob": "O alvo está sendo vigiado. Tentaremos novamente mais tarde.",
+    "money_earned": "Aqui, pegue isso em troca $%s.",
+    "missing_grind": "Você precisa de um moedor para isso.",
+    "missing_bag": "Você precisa de uma bolsa para isso.",
+    "goto_ambush": "Um trem com um saque precioso está parado.\n- Elimine os guardas.\n- Encontre os contêineres da Merryweather.\n- Roube o saque.",
+    "deliver_to_buyer": "Entregue o saque aos compradores, no ponto de entrega. Verifique seu GPS.",
+    "cut_door": "Abrir com Moedor",
+    "door_name": "Contêiner",
+    "gold_name": "Barras de Ouro",
+    "grab_gold": "Pegar barras de ouro",
+    "not_enough_space": "Você não tem espaço suficiente.",
+
+    "start_npc_name": "Cara Suspeito",
+    "start_npc_desc": "Iniciar Assalto ao Trem",
+    "alert_title": "Assalto ao Trem",
+    "alert_content": "Um trem está sendo assaltado!",
+
+    "deliver_gold": "Traga-me esse ouro.",
+    "deliver_the_gold": "Entregue o ouro",
+
+    "grinder_label": "Moedor",
+    "grinder_desc": "Apenas um moedor comum.",
+    "loot_item_label": "Barra de Ouro",
+    "loot_item_desc": "Bastante brilhante"
+}

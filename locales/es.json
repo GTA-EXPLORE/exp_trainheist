@@ -1,0 +1,32 @@
+{
+    "error": "Ocurrió un error.",
+    
+    "heistblip_name": "Tren detenido",
+    "buyer_blip": "Compradores",
+    "notif_title": "Atraco al tren",
+    "need_police": "No hay suficientes policías en línea.",
+    "wait_nextrob": "El objetivo está bajo vigilancia. Intentaremos de nuevo más tarde.",
+    "money_earned": "Aquí, toma esto a cambio $%s.",
+    "missing_grind": "Necesitas una amoladora para eso.",
+    "missing_bag": "Necesitas una bolsa para eso.",
+    "goto_ambush": "Un tren con un botín precioso está detenido.\n- Elimina a los guardias.\n- Encuentra los contenedores de Merryweather.\n- Roba el botín.",
+    "deliver_to_buyer": "Entrega el botín a los compradores, en el punto de entrega. Revisa tu GPS.",
+    "cut_door": "Abrir con amoladora",
+    "door_name": "Contenedor",
+    "gold_name": "Lingotes de oro",
+    "grab_gold": "Tomar lingotes de oro",
+    "not_enough_space": "No tienes suficiente espacio.",
+
+    "start_npc_name": "Tipo sospechoso",
+    "start_npc_desc": "Iniciar atraco al tren",
+    "alert_title": "Atraco al tren",
+    "alert_content": "¡Un tren está siendo robado!",
+
+    "deliver_gold": "Tráeme ese oro.",
+    "deliver_the_gold": "Entrega el oro",
+
+    "grinder_label": "Amoladora",
+    "grinder_desc": "Solo una amoladora regular.",
+    "loot_item_label": "Lingote de oro",
+    "loot_item_desc": "Bastante brillante"
+}

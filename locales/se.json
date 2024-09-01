@@ -1,0 +1,32 @@
+{
+    "error": "Ett fel inträffade.",
+    
+    "heistblip_name": "Tåg stoppat",
+    "buyer_blip": "Köpare",
+    "notif_title": "Tågrån",
+    "need_police": "Det finns inte tillräckligt med poliser online.",
+    "wait_nextrob": "Målet är under bevakning. Vi försöker igen senare.",
+    "money_earned": "Här, ta detta i utbyte $%s.",
+    "missing_grind": "Du behöver en slipmaskin för det.",
+    "missing_bag": "Du behöver en väska för det.",
+    "goto_ambush": "Ett tåg med ett värdefullt byte är stoppat.\n- Eliminera vakterna.\n- Hitta Merryweather-kontainrarna.\n- Stjäl bytet.",
+    "deliver_to_buyer": "Leverera bytet till köparna, vid leveranspunkten. Kontrollera din GPS.",
+    "cut_door": "Öppna med slipmaskin",
+    "door_name": "Kontainer",
+    "gold_name": "Guldtackor",
+    "grab_gold": "Ta guldtackor",
+    "not_enough_space": "Du har inte tillräckligt med utrymme.",
+
+    "start_npc_name": "Misstänkt kille",
+    "start_npc_desc": "Starta tågrån",
+    "alert_title": "Tågrån",
+    "alert_content": "Ett tåg blir rånat!",
+
+    "deliver_gold": "Ge mig det där guldet.",
+    "deliver_the_gold": "Leverera guldet",
+
+    "grinder_label": "Slipmaskin",
+    "grinder_desc": "Bara en vanlig slipmaskin.",
+    "loot_item_label": "Guldtacka",
+    "loot_item_desc": "Ganska glänsande"
+}

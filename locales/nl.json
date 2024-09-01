@@ -1,0 +1,32 @@
+{
+    "error": "Er is een fout opgetreden.",
+    
+    "heistblip_name": "Trein gestopt",
+    "buyer_blip": "Kopers",
+    "notif_title": "Treinroof",
+    "need_police": "Er zijn niet genoeg agenten online.",
+    "wait_nextrob": "Het doelwit wordt in de gaten gehouden. We proberen het later opnieuw.",
+    "money_earned": "Hier, neem dit in ruil $%s.",
+    "missing_grind": "Je hebt een slijpmachine nodig daarvoor.",
+    "missing_bag": "Je hebt een tas nodig daarvoor.",
+    "goto_ambush": "Een trein met een kostbare buit is gestopt.\n- Elimineer de bewakers.\n- Vind de Merryweather containers.\n- Steel de buit.",
+    "deliver_to_buyer": "Lever de buit af bij de kopers, op het afleverpunt. Controleer je GPS.",
+    "cut_door": "Openen met slijpmachine",
+    "door_name": "Container",
+    "gold_name": "Goudstaven",
+    "grab_gold": "Neem goudstaven",
+    "not_enough_space": "Je hebt niet genoeg ruimte.",
+
+    "start_npc_name": "Verdachte man",
+    "start_npc_desc": "Start treinroof",
+    "alert_title": "Treinroof",
+    "alert_content": "Een trein wordt beroofd!",
+
+    "deliver_gold": "Breng me dat goud terug.",
+    "deliver_the_gold": "Lever het goud af",
+
+    "grinder_label": "Slijpmachine",
+    "grinder_desc": "Gewoon een gewone slijpmachine.",
+    "loot_item_label": "Goudstaaf",
+    "loot_item_desc": "Heel glanzend"
+}

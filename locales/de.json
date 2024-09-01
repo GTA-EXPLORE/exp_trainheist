@@ -1,0 +1,32 @@
+{
+    "error": "Ein Fehler ist aufgetreten.",
+    
+    "heistblip_name": "Zug gestoppt",
+    "buyer_blip": "Käufer",
+    "notif_title": "Zugüberfall",
+    "need_police": "Es sind nicht genug Polizisten online.",
+    "wait_nextrob": "Das Ziel wird überwacht. Wir versuchen es später noch einmal.",
+    "money_earned": "Hier, nimm das im Austausch $%s.",
+    "missing_grind": "Du brauchst einen Schleifer dafür.",
+    "missing_bag": "Du brauchst eine Tasche dafür.",
+    "goto_ambush": "Ein Zug mit wertvoller Beute ist gestoppt.\n- Beseitige die Wachen.\n- Finde die Merryweather-Container.\n- Stehle die Beute.",
+    "deliver_to_buyer": "Liefere die Beute zu den Käufern am Lieferpunkt. Überprüfe dein GPS.",
+    "cut_door": "Mit Schleifer öffnen",
+    "door_name": "Container",
+    "gold_name": "Goldbarren",
+    "grab_gold": "Goldbarren nehmen",
+    "not_enough_space": "Du hast nicht genug Platz.",
+
+    "start_npc_name": "Verdächtiger Typ",
+    "start_npc_desc": "Zugüberfall starten",
+    "alert_title": "Zugüberfall",
+    "alert_content": "Ein Zug wird überfallen!",
+
+    "deliver_gold": "Bring mir das Gold zurück.",
+    "deliver_the_gold": "Liefere das Gold",
+
+    "grinder_label": "Schleifer",
+    "grinder_desc": "Nur ein gewöhnlicher Schleifer.",
+    "loot_item_label": "Goldbarren",
+    "loot_item_desc": "Ziemlich glänzend"
+}

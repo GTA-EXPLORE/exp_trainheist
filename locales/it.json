@@ -1,0 +1,32 @@
+{
+    "error": "Si è verificato un errore.",
+    
+    "heistblip_name": "Treno fermato",
+    "buyer_blip": "Acquirenti",
+    "notif_title": "Rapina al treno",
+    "need_police": "Non ci sono abbastanza poliziotti online.",
+    "wait_nextrob": "L'obiettivo è sorvegliato. Riproveremo più tardi.",
+    "money_earned": "Ecco, prendi questo in cambio $%s.",
+    "missing_grind": "Hai bisogno di una smerigliatrice per questo.",
+    "missing_bag": "Hai bisogno di una borsa per questo.",
+    "goto_ambush": "Un treno con un bottino prezioso è fermo.\n- Elimina le guardie.\n- Trova i container di Merryweather.\n- Ruba il bottino.",
+    "deliver_to_buyer": "Consegna il bottino agli acquirenti, al punto di consegna. Controlla il tuo GPS.",
+    "cut_door": "Apri con smerigliatrice",
+    "door_name": "Contenitore",
+    "gold_name": "Lingotti d'oro",
+    "grab_gold": "Prendi i lingotti d'oro",
+    "not_enough_space": "Non hai abbastanza spazio.",
+
+    "start_npc_name": "Tipo sospetto",
+    "start_npc_desc": "Inizia rapina al treno",
+    "alert_title": "Rapina al treno",
+    "alert_content": "Un treno è in fase di rapina!",
+
+    "deliver_gold": "Portami quell'oro.",
+    "deliver_the_gold": "Consegna l'oro",
+
+    "grinder_label": "Smerigliatrice",
+    "grinder_desc": "Solo una smerigliatrice normale.",
+    "loot_item_label": "Lingotto d'oro",
+    "loot_item_desc": "Abbastanza brillante"
+}
