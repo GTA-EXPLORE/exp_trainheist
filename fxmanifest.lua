@@ -26,3 +26,8 @@ files {
     "locales/*",
     "client/sounds/*"
 }
+
+
+dependencies {
+    "sd_lib"
+}
