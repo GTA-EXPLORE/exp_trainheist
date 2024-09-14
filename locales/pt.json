@@ -6,7 +6,7 @@
     "notif_title": "Assalto ao Trem",
     "need_police": "Não há policiais suficientes online.",
     "wait_nextrob": "O alvo está sendo vigiado. Tentaremos novamente mais tarde.",
-    "money_earned": "Aqui, pegue isso em troca $%s.",
+    "money_earned": "Aqui, pegue isso em troca ${amount}.",
     "missing_grind": "Você precisa de um moedor para isso.",
     "missing_bag": "Você precisa de uma bolsa para isso.",
     "goto_ambush": "Um trem com um saque precioso está parado.\n- Elimine os guardas.\n- Encontre os contêineres da Merryweather.\n- Roube o saque.",

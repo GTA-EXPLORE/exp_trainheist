@@ -6,7 +6,7 @@
     "notif_title": "Tågrån",
     "need_police": "Det finns inte tillräckligt med poliser online.",
     "wait_nextrob": "Målet är under bevakning. Vi försöker igen senare.",
-    "money_earned": "Här, ta detta i utbyte $%s.",
+    "money_earned": "Här, ta detta i utbyte ${amount}.",
     "missing_grind": "Du behöver en slipmaskin för det.",
     "missing_bag": "Du behöver en väska för det.",
     "goto_ambush": "Ett tåg med ett värdefullt byte är stoppat.\n- Eliminera vakterna.\n- Hitta Merryweather-kontainrarna.\n- Stjäl bytet.",

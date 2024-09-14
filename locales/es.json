@@ -6,7 +6,7 @@
     "notif_title": "Atraco al tren",
     "need_police": "No hay suficientes policías en línea.",
     "wait_nextrob": "El objetivo está bajo vigilancia. Intentaremos de nuevo más tarde.",
-    "money_earned": "Aquí, toma esto a cambio $%s.",
+    "money_earned": "Aquí, toma esto a cambio ${amount}.",
     "missing_grind": "Necesitas una amoladora para eso.",
     "missing_bag": "Necesitas una bolsa para eso.",
     "goto_ambush": "Un tren con un botín precioso está detenido.\n- Elimina a los guardias.\n- Encuentra los contenedores de Merryweather.\n- Roba el botín.",

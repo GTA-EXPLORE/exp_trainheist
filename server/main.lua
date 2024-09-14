@@ -49,7 +49,7 @@ RegisterNetEvent('exp_trainheist:DeliverGold', function()
         SD.Money.AddMoney(source, MONEY_TYPE, LOOT.price * count)
 
         TriggerClientEvent("exp_trainheist:ShowNotification", _source, {
-            message = SD.Locale.T("money_earned", {LOOT.price * count}),
+            message = SD.Locale.T("money_earned", {amount = LOOT.price * count}),
             title = SD.Locale.T("notif_title"),
             type = "default"
         })

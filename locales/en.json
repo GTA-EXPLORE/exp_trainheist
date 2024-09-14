@@ -6,7 +6,7 @@
     "notif_title": "Train Heist",
     "need_police": "There is not enough cop online.",
     "wait_nextrob": "The target is over watched. We'll try again later.",
-    "money_earned": "Here, take that in exchange $%s.",
+    "money_earned": "Here, take that in exchange ${amount}.",
     "missing_grind": "You need a grinder for that.",
     "missing_bag": "You need a bag for that.",
     "goto_ambush": "A train with a precious loot is stopped.\n- Eliminate the guards.\n- Find the Merryweather containers.\n- Steal the loot.",

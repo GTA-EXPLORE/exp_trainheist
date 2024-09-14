@@ -6,7 +6,7 @@
     "notif_title": "Treinroof",
     "need_police": "Er zijn niet genoeg agenten online.",
     "wait_nextrob": "Het doelwit wordt in de gaten gehouden. We proberen het later opnieuw.",
-    "money_earned": "Hier, neem dit in ruil $%s.",
+    "money_earned": "Hier, neem dit in ruil ${amount}.",
     "missing_grind": "Je hebt een slijpmachine nodig daarvoor.",
     "missing_bag": "Je hebt een tas nodig daarvoor.",
     "goto_ambush": "Een trein met een kostbare buit is gestopt.\n- Elimineer de bewakers.\n- Vind de Merryweather containers.\n- Steel de buit.",

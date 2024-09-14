@@ -6,7 +6,7 @@
     "notif_title": "Zugüberfall",
     "need_police": "Es sind nicht genug Polizisten online.",
     "wait_nextrob": "Das Ziel wird überwacht. Wir versuchen es später noch einmal.",
-    "money_earned": "Hier, nimm das im Austausch $%s.",
+    "money_earned": "Hier, nimm das im Austausch ${amount}.",
     "missing_grind": "Du brauchst einen Schleifer dafür.",
     "missing_bag": "Du brauchst eine Tasche dafür.",
     "goto_ambush": "Ein Zug mit wertvoller Beute ist gestoppt.\n- Beseitige die Wachen.\n- Finde die Merryweather-Container.\n- Stehle die Beute.",
