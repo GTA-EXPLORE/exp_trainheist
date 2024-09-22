@@ -45,8 +45,7 @@ GUARDS = {
     models = {
         "s_m_y_blackops_01"
     },
-    -- amount = 15,
-    amount = 0,
+    amount = 15,
     spawn_range = 30.0,
     weapons = {
         "WEAPON_PISTOL"
